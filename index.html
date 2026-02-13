@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Request a call back</title>
+  <title>ActiveWills | Request a call back</title>
+
   <style>
     :root{
       --bg:#f6f8fb;
@@ -16,23 +17,44 @@
       --shadow: 0 12px 30px rgba(2,6,23,.10);
       --radius: 16px;
     }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: radial-gradient(1200px 400px at 20% 0%, rgba(28,171,176,.20), transparent 60%),
-                  radial-gradient(900px 300px at 80% 0%, rgba(252,233,0,.18), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 400px at 20% 0%, rgba(28,171,176,.20), transparent 60%),
+        radial-gradient(900px 300px at 80% 0%, rgba(252,233,0,.18), transparent 55%),
+        var(--bg);
       color:var(--text);
     }
-    .wrap{ max-width: 860px; margin: 40px auto; padding: 16px; }
-    .header{ display:flex; gap:16px; align-items:center; margin-bottom: 18px; }
-    .logo{
-      width:48px;height:48px;border-radius:14px;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      box-shadow: var(--shadow);
+
+    .wrap{
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 16px;
     }
-    .title h1{ margin:0; font-size: 24px; }
-    .title p{ margin:4px 0 0; color:var(--muted); }
+
+    .header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin: 0 0 18px 0;
+    }
+
+    .brand-logo{
+      height: 46px;
+      width: auto;
+    }
+
+    .title h1{
+      margin:0;
+      font-size: 26px;
+    }
+
+    .title p{
+      margin:6px 0 0;
+      color:var(--muted);
+    }
 
     .card{
       background:var(--card);
@@ -41,44 +63,86 @@
       box-shadow: var(--shadow);
       padding: 22px;
     }
-    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    @media (max-width: 720px){ .grid{ grid-template-columns:1fr; } }
-    label{ display:block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 720px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    .row{ margin-bottom: 14px; }
+
+    label{
+      display:block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
     input, textarea, select{
       width:100%;
       padding: 12px 12px;
       border-radius: 12px;
       border:1px solid var(--border);
-      outline:none;
       font-size: 15px;
       background:#fff;
       box-sizing:border-box;
     }
+
     input:focus, textarea:focus, select:focus{
       border-color: rgba(28,171,176,.70);
       box-shadow: 0 0 0 4px rgba(28,171,176,.12);
+      outline:none;
     }
-    textarea{ min-height: 120px; resize: vertical; }
-    .row{ margin-bottom: 14px; }
+
+    textarea{
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .helper{
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
     .btn{
-      display:flex; gap:10px; align-items:center; justify-content:center;
       width:100%;
-      padding: 13px 14px;
-      border:0; border-radius: 14px;
+      padding: 14px;
+      border:0;
+      border-radius: 14px;
       cursor:pointer;
-      font-weight: 700; font-size: 15px;
+      font-weight: 700;
+      font-size: 15px;
       background: linear-gradient(135deg, var(--brand), #22c3c8);
       color:white;
     }
-    .fineprint{ margin-top: 10px; font-size: 12px; color: var(--muted); text-align:center; }
-    .status{ margin-top: 12px; font-size: 14px; text-align:center; }
+
+    .fineprint{
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align:center;
+    }
+
+    .status{
+      margin-top: 12px;
+      font-size: 14px;
+      text-align:center;
+    }
+
     .hidden{ display:none; }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="header">
-      <div class="logo" aria-hidden="true"></div>
+      <img class="brand-logo" src="./activewills-logo.png" alt="ActiveWills" />
       <div class="title">
         <h1>Request a call back</h1>
         <p>Fill in your details and we will be in touch.</p>
@@ -87,49 +151,59 @@
 
     <div class="card">
       <form id="leadForm">
-        <!-- Honeypot (spam trap). Humans should not fill this. -->
         <input class="hidden" type="text" id="company" name="company" autocomplete="off" tabindex="-1" />
 
         <div class="grid">
           <div class="row">
-            <label for="full_name">Full name</label>
-            <input id="full_name" name="full_name" type="text" required />
+            <label>Full name</label>
+            <input name="full_name" type="text" required />
           </div>
+
           <div class="row">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
+            <label>Email</label>
+            <input name="email" type="email" required />
           </div>
+
           <div class="row">
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" />
+            <label>Phone</label>
+            <input name="phone" type="tel" required />
           </div>
+
           <div class="row">
-            <label for="postcode">Postcode</label>
-            <input id="postcode" name="postcode" type="text" />
+            <label>Do you currently have a Will?</label>
+            <select name="has_will" required>
+              <option value="" selected disabled>Select one</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <label>Preferred callback date</label>
+            <input name="callback_date" type="date" required />
+            <div class="helper">Monday to Friday, 09:00 to 17:00</div>
+          </div>
+
+          <div class="row">
+            <label>Preferred callback time</label>
+            <select name="callback_time" required>
+              <option value="" selected disabled>Select one</option>
+              <option value="09:00 - 13:00">09:00 - 13:00</option>
+              <option value="13:00 - 17:00">13:00 - 17:00</option>
+            </select>
           </div>
         </div>
 
         <div class="row">
-          <label for="topic">What do you need help with?</label>
-          <select id="topic" name="topic" required>
-            <option value="" selected disabled>Select one</option>
-            <option>Will</option>
-            <option>LPAs</option>
-            <option>Will Trust</option>
-            <option>Probate / Executorship</option>
-            <option>Other</option>
-          </select>
+          <label>Message (optional)</label>
+          <textarea name="message" placeholder="Anything we should know before we call?"></textarea>
         </div>
 
-        <div class="row">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Briefly explain what you need"></textarea>
-        </div>
+        <input type="hidden" name="source" value="activewills-lpa-to-will-upsell" />
 
-        <input type="hidden" id="source" name="source" value="github-pages-form" />
-        <input type="hidden" id="submitted_at" name="submitted_at" />
+        <button class="btn" type="submit">Request a call back</button>
 
-        <button class="btn" type="submit">Submit</button>
         <div class="fineprint">By submitting this form you consent to be contacted about your enquiry.</div>
         <div id="status" class="status"></div>
       </form>
@@ -137,8 +211,9 @@
   </div>
 
   <script>
-    // Use webhook-test URL while testing.
-    const WEBHOOK_URL = "https://ng-honey.app.n8n.cloud/webhook-test/Activewills-upsell";
+    const WEBHOOK_URL = "https://ng-honey.app.n8n.cloud/webhook/Activewills-upsell";
+
+    const FORM_TOKEN = "9f7c2b4e8a1d6f3c9b0e2a7d5c4f8b1a6e3c9d7b2a4f6e1c8b0d3f5a7e2c9b4";
 
     document.getElementById("leadForm").addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -146,29 +221,28 @@
       const statusEl = document.getElementById("status");
       statusEl.textContent = "Submitting...";
 
-      // Honeypot check
       const company = document.getElementById("company").value;
       if (company && company.trim() !== "") {
         statusEl.textContent = "Thanks.";
         return;
       }
 
-      document.getElementById("submitted_at").value = new Date().toISOString();
-
-      const form = e.target;
-      const data = Object.fromEntries(new FormData(form).entries());
+      const data = Object.fromEntries(new FormData(e.target).entries());
 
       try {
         const res = await fetch(WEBHOOK_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            "X-Form-Token": FORM_TOKEN
+          },
           body: JSON.stringify(data),
         });
 
         if (!res.ok) throw new Error("Bad response");
 
         statusEl.textContent = "Submitted successfully. Thank you.";
-        form.reset();
+        e.target.reset();
       } catch (err) {
         statusEl.textContent = "Something went wrong. Please try again.";
       }
